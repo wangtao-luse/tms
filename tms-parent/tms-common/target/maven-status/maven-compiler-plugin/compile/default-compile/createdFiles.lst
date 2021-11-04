@@ -1,0 +1,8 @@
+com\tms\common\req\RequestBody.class
+com\tms\common\req\RequestHeader.class
+com\tms\common\exception\BaseException.class
+com\tms\common\App.class
+com\tms\common\resp\ResponseData.class
+com\tms\common\req\RequestMessage.class
+com\tms\common\resp\ResultCode.class
+com\tms\common\tool\TmsMpGenerator.class

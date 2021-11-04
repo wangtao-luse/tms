@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.tms</groupId>
+  <artifactId>tms-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>tms-eureka-server</module>
+    <module>tms-common</module>
+    <module>tms-model</module>
+    <module>tms-member-service</module>
+    <module>tms-member-persist</module>
+    <module>tms-member-api</module>
+    <module>tms-dictionary-service</module>
+    <module>tms-dictionary-persist</module>
+    <module>tms-dictionary-api</module>
+    
+  </modules>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.13.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <properties>
+    <java.version>1.8</java.version>
+    <spring-cloud.version>Hoxton.M3</spring-cloud.version>
+    <ojdbc6.version>6.0</ojdbc6.version>
+    <mysql.version>8.0.18</mysql.version>
+    <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
+    <mybatis-plus-generator.version>3.4.1</mybatis-plus-generator.version>
+    <fastjson.version>1.2.78</fastjson.version>
+    <velocity.version>2.3</velocity.version>
+    <swagger.verision>2.0.1.RELEASE</swagger.verision>
+  </properties>
+  <dependencies>
+  <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>    
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>fastjson</artifactId>
+	    <version>${fastjson.version}</version>
+	</dependency>
+    <dependency>
+	    <groupId>com.spring4all</groupId>
+	    <artifactId>swagger-spring-boot-starter</artifactId>
+	    <version>${swagger.verision}</version>
+	</dependency>
+    <!-- springboot web -->
+  	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+    
+
+  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+     <!-- https://www.pianshen.com/article/8066985458/
+    	mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc14 -Dversion=10.2.0.4.0 -Dpackaging=jar -Dfile=D:\Oracle_10g_10.2.0.4_JDBC_ojdbc14.jar
+    	mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=6.0 -Dpackaging=jar -Dfile=ojdbc6.jar
+    	
+     -->
+     <!-- oracle驱动包 -->
+     <dependency>
+	    <groupId>com.oracle</groupId>
+	    <artifactId>ojdbc6</artifactId>
+	    <version>${ojdbc6.version}</version>
+	</dependency>
+	<!-- mysql驱动包 -->
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>${mysql.version}</version>
+	</dependency>
+	<!-- mybatis plus -->
+	<dependency>
+	    <groupId>com.baomidou</groupId>
+	    <artifactId>mybatis-plus-boot-starter</artifactId>
+	    <version>${mybatis-plus.version}</version>
+	</dependency>
+	<!-- mybatis plus代码生成器 -->
+	<dependency>
+	    <groupId>com.baomidou</groupId>
+	    <artifactId>mybatis-plus-generator</artifactId>
+	    <version>${mybatis-plus-generator.version}</version>
+	</dependency>
+	<!-- velocity模板引擎 -->
+	<dependency>
+	    <groupId>org.apache.velocity</groupId>
+	    <artifactId>velocity-engine-core</artifactId>
+	    <version>${velocity.version}</version>
+	</dependency>
+	
+
+      
+    </dependencies>
+  </dependencyManagement>
+ <repositories>
+     <repository>
+         <id>spring-milestone-repo</id>
+         <url>http://repo.spring.io/milestone/</url>
+     </repository>
+ </repositories>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+     <profile>
+        <id>dev</id>
+        <activation>
+           <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+           <profiles.active>dev</profiles.active>
+           <eureka.server.port>9090</eureka.server.port>
+           <eureka.host>127.0.0.1</eureka.host>
+           <server.account.port>9091</server.account.port>
+           <eureka.instance.prefer-ip-address>true</eureka.instance.prefer-ip-address>
+           <spring.datasource.url>jdbc:oracle:thin:@127.0.0.1:1521:tmstest</spring.datasource.url>
+           <spring.datasource.driverClassName>oracle.jdbc.driver.OracleDriver</spring.datasource.driverClassName>
+           <spring.datasource.username>tmstest</spring.datasource.username>
+           <spring.datasource.password>top@958958</spring.datasource.password>
+        </properties>
+        
+     </profile>
+  </profiles>
+</project>
