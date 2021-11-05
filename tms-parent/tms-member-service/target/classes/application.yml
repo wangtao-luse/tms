@@ -1,2 +1,8 @@
-#端口
+#mybatis plus
+mybatis-plus:  mapper-locations: classpath*:mapping/*.xml  type-aliases-package: com.tms.model.member
+  configuration:    map-underscore-to-camel-case: true
 
+spring:  datasource: #数据库配置    url: 'jdbc:oracle:thin:@127.0.0.1:1521:tmstest'
+    driver-class-name: 'oracle.jdbc.driver.OracleDriver'
+    username: 'tmstest'
+    password: 'top@958958'

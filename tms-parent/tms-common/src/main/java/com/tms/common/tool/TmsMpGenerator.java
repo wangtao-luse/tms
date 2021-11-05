@@ -104,7 +104,7 @@ private static DataSourceConfig dataSourceConfig() {
 	dsc.setDriverName("com.mysql.cj.jdbc.Driver");
 	dsc.setUrl("jdbc:mysql://106.54.162.159:3308/itour?serverTimezone=UTC");
 	dsc.setUsername("root");
-	dsc.setPassword("root");
+	dsc.setPassword("mysql@958958");
 	return dsc;
 }
 /**

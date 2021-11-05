@@ -1,2 +1,8 @@
-#端口
+#mybatis plus
+mybatis-plus:  mapper-locations: classpath*:mapping/*.xml  type-aliases-package: com.tms.model.member
+  configuration:    map-underscore-to-camel-case: true
 
+spring:  datasource: #数据库配置    url: '@spring.datasource.url@'
+    driver-class-name: '@spring.datasource.driverClassName@'
+    username: '@spring.datasource.username@'
+    password: '@spring.datasource.password@'
