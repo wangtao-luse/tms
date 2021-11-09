@@ -9,4 +9,4 @@ Redis
 docker run -itd --restart=always --name ben-test-redis -p 6380:6379 -v /mnt/redis/test/data:/data  -v /mnt/redis/test/conf/redis.conf:/usr/local/etc/redis/redis.conf redis --requirepass 'redis@958958'
 docker run -itd --restart=always --name ben-spro-redis -p 6397:6379 -v /mnt/redis/spro/data:/data  -v /mnt/redis/spro/conf/redis.conf:/usr/local/etc/redis/redis.conf redis --requirepass 'redis@958958'
 
-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
+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
