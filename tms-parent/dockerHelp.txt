@@ -1,5 +1,10 @@
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+
+
+
 Nginx
-docker run -d --name spro-nginx -p 80:80 -v /mnt/nginx/nginx.conf:/etc/nginx/nginx.conf -v /mnt/nginx/log:/var/log/nginx -v /mnt/nginx/html:/usr/share/nginx/html -v /mnt/nginx/conf:/etc/nginx/conf.d  --privileged=true nginx
+docker run -d --name spro-nginx -p 80:80 -v /mnt/nginx/nginx.conf:/etc/nginx/nginx.conf -v /mnt/nginx/log:/var/log/nginx -v /mnt/nginx/html:/usr/share/nginx/html -v /mnt/nginx/conf:/etc/nginx/conf.d  --privileged=true --restart=always nginx
 
 Mysql
 docker run  -d  --restart=always  --name ben-spro-mysql -e MYSQL_ROOT_PASSWORD=mysql@958958 -p 3306:3306 -v /mnt/mysql/spro/mysqldata:/var/lib/mysql  -v /mnt/mysql/spro/conf:/etc/mysql/conf.d  mysql  --lower-case-table-names=1
@@ -9,4 +14,11 @@ Redis
 docker run -itd --restart=always --name ben-test-redis -p 6380:6379 -v /mnt/redis/test/data:/data  -v /mnt/redis/test/conf/redis.conf:/usr/local/etc/redis/redis.conf redis --requirepass 'redis@958958'
 docker run -itd --restart=always --name ben-spro-redis -p 6397:6379 -v /mnt/redis/spro/data:/data  -v /mnt/redis/spro/conf/redis.conf:/usr/local/etc/redis/redis.conf redis --requirepass 'redis@958958'
 
-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
+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
+
+
+docker run -d --restart=always --name frps -p 8082:8082
+-v /mnt/frp/frps.ini:/etc/frp/frps.ini snowdreamtech/frps 
+-v /mnt/frp/frpc.ini:/conf --restart=always cloverzrg/frpc-docker
+
+docker run --restart=always --name frps -d -v /etc/frp/frps.ini:/etc/frp/frps.ini  snowdreamtech/frps
