@@ -22,3 +22,7 @@ docker run -d --restart=always --name frps -p 8082:8082
 -v /mnt/frp/frpc.ini:/conf --restart=always cloverzrg/frpc-docker
 
 docker run --restart=always --name frps -d -v /etc/frp/frps.ini:/etc/frp/frps.ini  snowdreamtech/frps
+
+
+frp内网穿透
+https://www.jianshu.com/p/57658825ff0d?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
